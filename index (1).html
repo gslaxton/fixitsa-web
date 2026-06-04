@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixIt SA — Verified Home Professionals</title>
+  <meta name="description" content="FixIt SA connects South African homeowners with verified, background-checked trade professionals. Post a job, get quotes, and hire with confidence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #047857; --green-light: #059669; --green-pale: #ECFDF5; --green-mid: #D1FAE5;
+      --dark: #111827; --mid: #374151; --muted: #6B7280; --faint: #9CA3AF;
+      --bg: #F9FAFB; --white: #FFFFFF; --border: #E5E7EB;
+      --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s; }
+    .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--green); letter-spacing: -0.5px; text-decoration: none; }
+    .nav-logo span { color: var(--dark); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta { background: var(--green) !important; color: var(--white) !important; padding: 10px 24px; border-radius: 100px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--green-light) !important; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 48px 80px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 40%, rgba(4,120,87,0.07) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(4,120,87,0.04) 0%, transparent 60%); pointer-events: none; }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(4,120,87,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(4,120,87,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%); }
+    .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-pale); border: 1px solid var(--green-mid); color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; }
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(42px, 5vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -2px; color: var(--dark); margin-bottom: 24px; }
+    .hero h1 em { font-style: normal; color: var(--green); }
+    .hero p { font-size: 17px; line-height: 1.7; color: var(--muted); margin-bottom: 40px; max-width: 480px; font-weight: 300; }
+    .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--white); padding: 16px 32px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 8px 32px rgba(4,120,87,0.25); }
+    .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(4,120,87,0.35); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; color: var(--dark); font-size: 15px; font-weight: 500; text-decoration: none; padding: 16px 24px; border-radius: 100px; border: 1.5px solid var(--border); transition: border-color 0.2s, color 0.2s; }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .hero-stat-value { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--dark); }
+    .hero-stat-label { font-size: 12px; color: var(--faint); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* HERO VISUAL */
+    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+    .hero-card { background: var(--white); border-radius: 28px; padding: 28px; box-shadow: 0 24px 80px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06); width: 320px; position: relative; animation: float 4s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .hero-card-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--green-pale); color: var(--green); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 100px; margin-bottom: 16px; }
+    .hero-card-avatar { width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, var(--green), var(--green-light)); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 12px; }
+    .hero-card-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--dark); }
+    .hero-card-trade { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .hero-card-stars { display: flex; align-items: center; gap: 2px; margin-bottom: 14px; }
+    .star { color: #F59E0B; font-size: 14px; }
+    .hero-card-rating { font-size: 12px; font-weight: 700; color: var(--dark); margin-left: 4px; }
+    .hero-card-dist { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--faint); padding: 10px 14px; background: var(--bg); border-radius: 12px; }
+    .hero-card-verified { position: absolute; top: -10px; right: -10px; background: var(--green); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 4px 12px rgba(4,120,87,0.4); }
+    .hero-float-badge { position: absolute; background: var(--white); border-radius: 16px; padding: 10px 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .hero-float-badge-1 { top: 10px; left: -50px; color: var(--green); }
+    .hero-float-badge-2 { bottom: 40px; right: -50px; color: var(--dark); }
+
+    /* SECTIONS */
+    section { padding: 100px 48px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .section-tag::before { content: ''; width: 24px; height: 2px; background: var(--green); }
+    .section-heading { font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; color: var(--dark); margin-bottom: 20px; }
+    .section-sub { font-size: 17px; color: var(--muted); line-height: 1.7; font-weight: 300; max-width: 560px; }
+
+    /* HOW IT WORKS */
+    .how { background: var(--bg); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 64px; }
+    .how-card { background: var(--white); border-radius: 28px; padding: 40px 32px; border: 1px solid var(--border); position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .how-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+    .how-number { font-family: var(--font-display); font-size: 72px; font-weight: 800; color: var(--green-mid); line-height: 1; position: absolute; top: 20px; right: 24px; }
+    .how-icon { width: 56px; height: 56px; background: var(--green-pale); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 24px; }
+    .how-card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+    .how-card p { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+    /* SPLIT */
+    .split { display: grid; grid-template-columns: 1fr 1fr; }
+    .split-panel { padding: 80px 64px; }
+    .split-panel-home { background: var(--white); }
+    .split-panel-worker { background: var(--dark); }
+    .split-panel-worker .section-tag { color: var(--green-mid); }
+    .split-panel-worker .section-tag::before { background: var(--green-mid); }
+    .split-panel-worker .section-heading { color: var(--white); }
+    .split-panel-worker .section-sub { color: rgba(255,255,255,0.6); }
+    .feature-list { list-style: none; margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 15px; line-height: 1.6; color: var(--mid); }
+    .split-panel-worker .feature-list li { color: rgba(255,255,255,0.75); }
+    .feature-check { width: 24px; height: 24px; border-radius: 8px; background: var(--green-pale); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+    .split-panel-worker .feature-check { background: rgba(4,120,87,0.3); color: var(--green-mid); }
+
+    /* TRUST */
+    .trust { background: var(--green); }
+    .trust .section-tag { color: var(--green-mid); }
+    .trust .section-tag::before { background: var(--green-mid); }
+    .trust .section-heading { color: var(--white); }
+    .trust .section-sub { color: rgba(255,255,255,0.75); }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 64px; }
+    .trust-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 32px 24px; text-align: center; transition: background 0.2s; }
+    .trust-card:hover { background: rgba(255,255,255,0.15); }
+    .trust-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+    .trust-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .trust-card p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { background: var(--bg); text-align: center; }
+    .cta-inner { max-width: 640px; margin: 0 auto; }
+    .cta-section .section-tag { justify-content: center; }
+    .cta-section .section-tag::before { display: none; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
+
+    /* LEGAL */
+    .legal-section { border-top: 1px solid var(--border); padding: 80px 48px; }
+    .legal-section .section-inner { max-width: 800px; }
+    .legal-section h2 { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--dark); margin-bottom: 8px; letter-spacing: -0.5px; }
+    .legal-date { font-size: 12px; color: var(--faint); margin-bottom: 32px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; display: block; }
+    .legal-section h3 { font-size: 16px; font-weight: 600; color: var(--dark); margin: 28px 0 10px; }
+    .legal-section p, .legal-section li { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 10px; }
+    .legal-section ul { padding-left: 20px; margin-bottom: 16px; }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--white); text-decoration: none; }
+    .footer-logo span { color: var(--green-mid); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      section { padding: 60px 24px; }
+      .how-grid { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; }
+      .split-panel { padding: 60px 24px; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .legal-section { padding: 60px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">FixIt<span>SA</span></a>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#homeowners">Homeowners</a></li>
+    <li><a href="#workers">Professionals</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a href="#terms">Terms</a></li>
+    <li><a href="#cta" class="nav-cta">Get the App</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="hero-badge-dot"></span> Now Live in South Africa</div>
+      <h1>Your Home,<br><em>Fixed Right.</em></h1>
+      <p>FixIt SA connects South African homeowners with verified, background-checked trade professionals. Post a job, get quotes, hire with confidence.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">🛠 Get the App</a>
+        <a href="#how-it-works" class="btn-secondary">See how it works →</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-value">R50K</div><div class="hero-stat-label">Protection Guarantee</div></div>
+        <div><div class="hero-stat-value">100%</div><div class="hero-stat-label">Verified Pros</div></div>
+        <div><div class="hero-stat-value">ZA</div><div class="hero-stat-label">Built for SA</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-float-badge hero-float-badge-1">📍 2.4km away</div>
+      <div class="hero-card">
+        <div class="hero-card-verified">✓</div>
+        <div class="hero-card-tag">⚡ Available Now</div>
+        <div class="hero-card-avatar">🔧</div>
+        <div class="hero-card-name">Sipho Dlamini</div>
+        <div class="hero-card-trade">Master Electrician · Sandton</div>
+        <div class="hero-card-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="hero-card-rating">4.9 (84 reviews)</span>
+        </div>
+        <div class="hero-card-dist">🛡 ID Verified &nbsp;·&nbsp; 📋 Police Clearance</div>
+      </div>
+      <div class="hero-float-badge hero-float-badge-2">✅ Quote accepted</div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how-it-works">
+  <div class="section-inner">
+    <div class="section-tag">Simple Process</div>
+    <h2 class="section-heading">Fixed in three steps.</h2>
+    <p class="section-sub">No more cold calling or hoping for the best. FixIt SA makes finding the right professional simple.</p>
+    <div class="how-grid">
+      <div class="how-card fade-up">
+        <div class="how-number">01</div>
+        <div class="how-icon">📋</div>
+        <h3>Post Your Job</h3>
+        <p>Describe what needs fixing, set your budget, and choose your urgency. Takes less than two minutes.</p>
+      </div>
+      <div class="how-card fade-up" style="transition-delay:0.1s">
+        <div class="how-number">02</div>
+        <div class="how-icon">💬</div>
+        <h3>Receive Quotes</h3>
+        <p>Verified professionals nearby send you their quotes. Compare prices, ratings, and credentials.</p>
+      </div>
+      <div class="how-card fade-up" style="transition-delay:0.2s">
+        <div class="how-number">03</div>
+        <div class="how-icon">🏠</div>
+        <h3>Job Done Right</h3>
+        <p>Accept a quote, your pro gets to work, and you review when complete. Covered by our R50,000 guarantee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="split">
+  <div class="split-panel split-panel-home" id="homeowners">
+    <div class="section-tag">Homeowners</div>
+    <h2 class="section-heading">Peace of mind, every job.</h2>
+    <p class="section-sub">Every professional on FixIt SA is verified, background-checked, and rated by real homeowners like you.</p>
+    <ul class="feature-list">
+      <li><span class="feature-check">✓</span>Post a job in under 2 minutes, any trade</li>
+      <li><span class="feature-check">✓</span>Get multiple competitive quotes fast</li>
+      <li><span class="feature-check">✓</span>View verified ID, police clearance & qualifications</li>
+      <li><span class="feature-check">✓</span>R50,000 protection guarantee on every job</li>
+      <li><span class="feature-check">✓</span>Message your pro directly through the app</li>
+      <li><span class="feature-check">✓</span>Leave reviews and build your trusted network</li>
+    </ul>
+  </div>
+  <div class="split-panel split-panel-worker" id="workers">
+    <div class="section-tag">Professionals</div>
+    <h2 class="section-heading">Grow your business.</h2>
+    <p class="section-sub">Access a steady stream of verified job leads matched to your trade, location, and availability.</p>
+    <ul class="feature-list">
+      <li><span class="feature-check">✓</span>See jobs matched to your specific trade skills</li>
+      <li><span class="feature-check">✓</span>Filter by distance, urgency, and budget</li>
+      <li><span class="feature-check">✓</span>Build a verified profile that wins more work</li>
+      <li><span class="feature-check">✓</span>Track earnings, invoices, and job history</li>
+      <li><span class="feature-check">✓</span>Set your own rates, availability, and service area</li>
+      <li><span class="feature-check">✓</span>Get paid faster with digital invoicing</li>
+    </ul>
+  </div>
+</div>
+
+<section class="trust">
+  <div class="section-inner">
+    <div class="section-tag">Why FixIt SA</div>
+    <h2 class="section-heading">Safety built in.</h2>
+    <p class="section-sub">We verify every professional before they can work through FixIt SA. Your home deserves nothing less.</p>
+    <div class="trust-grid">
+      <div class="trust-card fade-up"><span class="trust-icon">🪪</span><h3>ID Verified</h3><p>Every professional's identity is confirmed before they join the platform.</p></div>
+      <div class="trust-card fade-up" style="transition-delay:0.1s"><span class="trust-icon">🛡</span><h3>Police Clearance</h3><p>Background checks ensure you know exactly who is entering your home.</p></div>
+      <div class="trust-card fade-up" style="transition-delay:0.2s"><span class="trust-icon">📜</span><h3>Trade Certified</h3><p>Qualifications are verified so you get a pro who knows their trade.</p></div>
+      <div class="trust-card fade-up" style="transition-delay:0.3s"><span class="trust-icon">💰</span><h3>R50K Guarantee</h3><p>Every job is covered by our protection guarantee. Work with total confidence.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta">
+  <div class="section-inner cta-inner">
+    <div class="section-tag">Get Started</div>
+    <h2 class="section-heading">Ready to get started?</h2>
+    <p class="section-sub" style="margin:0 auto">Download FixIt SA and post your first job in minutes. Or sign up as a professional and start receiving leads today.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-primary">📱 Download for iOS</a>
+      <a href="#" class="btn-primary">🤖 Download for Android</a>
+    </div>
+    <p style="margin-top:24px;font-size:13px;color:var(--faint)">Coming soon to the App Store and Google Play.</p>
+  </div>
+</section>
+
+<section class="legal-section" id="privacy">
+  <div class="section-inner">
+    <h2>Privacy Policy</h2>
+    <span class="legal-date">Last updated: June 2026</span>
+    <p>FixIt SA (Pty) Ltd ("FixIt SA", "we", "us") is committed to protecting your personal information in accordance with the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
+    <h3>1. Information We Collect</h3>
+    <ul>
+      <li>Name, email address, and phone number when you register</li>
+      <li>Location data (zip code, suburb, city) to match you with nearby professionals</li>
+      <li>For professionals: identity documents, police clearance certificates, and trade qualifications submitted for verification</li>
+      <li>Job details, quotes, messages, and reviews created through the platform</li>
+      <li>Banking details for professionals (used solely for invoicing and platform fee payments)</li>
+    </ul>
+    <h3>2. How We Use Your Information</h3>
+    <ul>
+      <li>To connect homeowners with appropriate trade professionals</li>
+      <li>To verify the identity and credentials of professionals on the platform</li>
+      <li>To process platform fees and generate invoices</li>
+      <li>To send transactional emails (quote notifications, payment confirmations)</li>
+    </ul>
+    <h3>3. Document Verification & POPIA Compliance</h3>
+    <p>Identity documents and certificates submitted for verification are stored temporarily in private, encrypted storage. Documents are reviewed by FixIt SA staff only. Once verification is complete, the original document files are permanently deleted. We retain only a verified status (true/false) and the date of verification. Documents are never shared with third parties.</p>
+    <h3>4. Location Data</h3>
+    <p>We use your zip code to calculate distances between homeowners and professionals. We do not track your real-time GPS location.</p>
+    <h3>5. Data Sharing</h3>
+    <p>We do not sell your personal information. Limited information is shared only as necessary to operate the platform. We use Supabase for secure data storage and Resend for transactional emails.</p>
+    <h3>6. Data Retention</h3>
+    <p>We retain your account data for as long as your account is active. You may request deletion at any time by contacting privacy@fixitsa.co.za.</p>
+    <h3>7. Your Rights Under POPIA</h3>
+    <p>You have the right to access, correct, or delete your personal information. Contact us at privacy@fixitsa.co.za. We will respond within 30 days.</p>
+    <h3>8. Contact</h3>
+    <p>privacy@fixitsa.co.za</p>
+  </div>
+</section>
+
+<section class="legal-section" id="terms">
+  <div class="section-inner">
+    <h2>Terms of Use</h2>
+    <span class="legal-date">Last updated: June 2026</span>
+    <p>By using the FixIt SA platform, you agree to these Terms of Use. Please read them carefully.</p>
+    <h3>1. The Platform</h3>
+    <p>FixIt SA is a marketplace connecting homeowners with trade professionals. FixIt SA is not a party to any agreement between Homeowners and Professionals and does not employ or control Professionals.</p>
+    <h3>2. User Accounts</h3>
+    <p>You must be 18 or older to use FixIt SA. You are responsible for all activity under your account and must provide accurate information when registering.</p>
+    <h3>3. For Homeowners</h3>
+    <ul>
+      <li>You may post job requests and receive quotes from Professionals</li>
+      <li>You are responsible for reviewing Professional credentials before hiring</li>
+      <li>Payment terms are agreed directly between you and the Professional</li>
+    </ul>
+    <h3>4. For Professionals</h3>
+    <ul>
+      <li>You must submit accurate credentials for verification</li>
+      <li>A platform fee of 10% applies to all completed jobs, due within 14 days of completion</li>
+      <li>Late payments incur an additional 2% fee per month</li>
+      <li>Continued non-payment may result in account suspension</li>
+    </ul>
+    <h3>5. Platform Fee</h3>
+    <p>FixIt SA charges Professionals a 10% platform fee on the invoiced amount for completed jobs, payable via EFT within 14 days.</p>
+    <h3>6. R50,000 Protection Guarantee</h3>
+    <p>FixIt SA provides a protection guarantee of up to R50,000 per job covering homeowners against damages caused by verified Professionals acting through the platform. Terms and conditions apply.</p>
+    <h3>7. Prohibited Conduct</h3>
+    <ul>
+      <li>Submitting false or misleading information</li>
+      <li>Circumventing the platform to avoid platform fees</li>
+      <li>Harassing or abusing other users</li>
+      <li>Using the platform for any unlawful purpose</li>
+    </ul>
+    <h3>8. Limitation of Liability</h3>
+    <p>To the maximum extent permitted by law, FixIt SA is not liable for the quality of work performed by Professionals or disputes between users.</p>
+    <h3>9. Governing Law</h3>
+    <p>These Terms are governed by the laws of the Republic of South Africa.</p>
+    <h3>10. Contact</h3>
+    <p>legal@fixitsa.co.za</p>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="footer-logo">FixIt<span>SA</span></a>
+  <ul class="footer-links">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#privacy">Privacy Policy</a></li>
+    <li><a href="#terms">Terms of Use</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 FixIt SA (Pty) Ltd. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.08)' : 'none';
+  });
+</script>
+</body>
+</html>
