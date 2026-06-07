@@ -33,7 +33,7 @@
     .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 48px 80px; position: relative; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 40%, rgba(4,120,87,0.07) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(4,120,87,0.04) 0%, transparent 60%); pointer-events: none; }
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(4,120,87,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(4,120,87,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%); }
-    .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+    .hero-inner { max-width: 1200px; margin: 0 geometric auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-pale); border: 1px solid var(--green-mid); color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; }
     .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -48,6 +48,10 @@
     .hero-stats { display: flex; gap: 32px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
     .hero-stat-value { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--dark); }
     .hero-stat-label { font-size: 12px; color: var(--faint); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* DELETION REQUEST BUTTON CUSTOM STYLES */
+    .btn-danger { display: inline-flex; align-items: center; gap: 8px; background: #DC2626; color: var(--white); padding: 12px 28px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; margin-top: 16px; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2); }
+    .btn-danger:hover { background: #B91C1C; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3); }
 
     /* HERO VISUAL */
     .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
@@ -318,12 +322,15 @@
     <p>We use your zip code to calculate distances between homeowners and professionals. We do not track your real-time GPS location.</p>
     <h3>5. Data Sharing</h3>
     <p>We do not sell your personal information. Limited information is shared only as necessary to operate the platform. We use Supabase for secure data storage and Resend for transactional emails.</p>
-    <h3>6. Data Retention</h3>
-    <p>We retain your account data for as long as your account is active. You may request deletion at any time by contacting privacy@fixitsa.co.za.</p>
+    <h3 id="delete-request">6. Data Retention & Deletion Requests</h3>
+    <p>We retain your account data for as long as your account is active. In accordance with POPIA regulations and app store compliance standards, you have the absolute right to request the permanent removal of your data. You may request account deletion at any time by contacting greg@laxtonsa.com or clicking the action button below to initiate an official request via email:</p>
+    <div>
+      <a href="mailto:greg@laxtonsa.com?subject=FixIt%20SA%20-%20Account%20Deletion%20Request&body=Hello%20FixIt%20SA%20Privacy%20Team%2C%0A%0AI%20am%20writing%20to%20request%20the%20permanent%20deletion%20of%20my%20account%20and%20all%20associated%20personal%20data%20linked%20to%20my%20profile.%20Please%20confirm%20once%20the%20removal%20is%20complete.%0A%0ARegards%2C" class="btn-danger">🗑️ Request Account Deletion</a>
+    </div>
     <h3>7. Your Rights Under POPIA</h3>
-    <p>You have the right to access, correct, or delete your personal information. Contact us at privacy@fixitsa.co.za. We will respond within 30 days.</p>
+    <p>You have the right to access, correct, or delete your personal information. Contact us at greg@laxtonsa.com. We will respond within 30 days.</p>
     <h3>8. Contact</h3>
-    <p>privacy@fixitsa.co.za</p>
+    <p>greg@laxtonsa.com</p>
   </div>
 </section>
 
@@ -365,7 +372,7 @@
     <h3>9. Governing Law</h3>
     <p>These Terms are governed by the laws of the Republic of South Africa.</p>
     <h3>10. Contact</h3>
-    <p>legal@fixitsa.co.za</p>
+    <p>greg@laxtonsa.com</p>
   </div>
 </section>
 
@@ -374,6 +381,7 @@
   <ul class="footer-links">
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#privacy">Privacy Policy</a></li>
+    <li><a href="#delete-request" style="color: #F87171; font-weight: 600;">Request Data Deletion</a></li>
     <li><a href="#terms">Terms of Use</a></li>
   </ul>
   <div class="footer-copy">© 2026 FixIt SA (Pty) Ltd. All rights reserved.</div>
