@@ -1,4 +1,4 @@
 # Tenant maintenance reporting links: https://praxis-sa.net/t/{token}
-/t/*  /t/index.html  200
+/t/* /tenant.html 200
 # Construction Pro client project links: https://praxis-sa.net/p/{token}
-/p/*  /p/index.html  200
+/p/* /project.html 200

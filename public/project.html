@@ -197,7 +197,9 @@
 
     const $ = (id) => document.getElementById(id);
     const show = (id) => ['loading', 'invalid', 'page'].forEach(s => { $(s).hidden = s !== id; });
-    const token = (location.pathname.match(/^\/p\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/?$/i) || [])[1];
+    // The token from /t/{token}, /p/{token} or ?token=…; anything that isn't a UUID shows the inactive-link page
+    const rawToken = new URLSearchParams(window.location.search).get('token') || window.location.pathname.split('/').filter(Boolean).pop();
+    const token = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(rawToken || '') ? rawToken.toLowerCase() : null;
 
     // Builds an element; text is always set as text, never as HTML
     const el = (tag, attrs = {}, ...children) => {
