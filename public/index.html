@@ -103,6 +103,62 @@
     .feature-check { width: 24px; height: 24px; border-radius: 8px; background: var(--green-pale); color: var(--green); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
     .split-panel-worker .feature-check { background: rgba(4,120,87,0.3); color: var(--green-mid); }
 
+    /* SUITES (Landlord Pro, Construction Pro) */
+    .suite { padding: 100px 48px; }
+    .suite-light { background: var(--bg); }
+    .suite-dark { background: var(--dark); }
+    .suite-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; }
+    .suite-dark .section-tag { color: var(--green-mid); }
+    .suite-dark .section-tag::before { background: var(--green-mid); }
+    .suite-dark .section-heading { color: var(--white); }
+    .suite-dark .section-sub { color: rgba(255,255,255,0.6); }
+    .suite-dark .feature-list li { color: rgba(255,255,255,0.75); }
+    .suite-dark .feature-check { background: rgba(4,120,87,0.3); color: var(--green-mid); }
+    .feature-list li b { color: var(--dark); font-weight: 600; }
+    .suite-dark .feature-list li b, .split-panel-worker .feature-list li b { color: var(--white); }
+    .plan-pill { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; font-size: 13px; font-weight: 600; color: var(--green); background: var(--green-pale); border: 1px solid var(--green-mid); padding: 8px 16px; border-radius: 100px; text-decoration: none; }
+    .suite-dark .plan-pill { color: var(--green-mid); background: rgba(4,120,87,0.2); border-color: rgba(209,250,229,0.25); }
+    .mock { background: var(--white); border-radius: 28px; padding: 24px; box-shadow: 0 24px 80px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.06); max-width: 380px; width: 100%; justify-self: center; }
+    .mock-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--green-pale); color: var(--green); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 100px; margin-bottom: 14px; }
+    .mock-tag.amber { background: #FFFBEB; color: #B45309; }
+    .mock-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--dark); }
+    .mock-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .mock-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--mid); padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .mock-row:last-child { border-bottom: none; }
+    .mock-row b { color: var(--dark); white-space: nowrap; }
+    .mock-bar { height: 8px; border-radius: 4px; background: var(--border); overflow: hidden; margin: 14px 0 6px; }
+    .mock-bar div { height: 100%; background: var(--green); border-radius: 4px; }
+    .mock-chip { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 100px; background: var(--bg); color: var(--muted); white-space: nowrap; }
+    .mock-chip.ok { background: var(--green-pale); color: var(--green); }
+    .mock-chip.wait { background: #FFFBEB; color: #B45309; }
+    .mock-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .mock-btn { text-align: center; font-size: 13px; font-weight: 600; padding: 10px; border-radius: 100px; background: var(--green); color: var(--white); }
+    .mock-btn.ghost { background: var(--white); color: var(--mid); border: 1.5px solid var(--border); }
+
+    /* PRICING */
+    .pricing { background: var(--white); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; }
+    .price-card { border: 1px solid var(--border); border-radius: 28px; padding: 28px 24px; display: flex; flex-direction: column; background: var(--white); transition: transform 0.2s, box-shadow 0.2s; }
+    .price-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+    .price-card.featured { background: var(--dark); border-color: var(--dark); }
+    .price-who { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 18px; }
+    .price-card.featured .price-who { color: var(--green-mid); }
+    .price-tier { border-top: 1px solid var(--border); padding: 16px 0; }
+    .price-tier:first-of-type { border-top: none; padding-top: 0; }
+    .price-card.featured .price-tier { border-color: rgba(255,255,255,0.12); }
+    .price-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--dark); }
+    .price-amount { font-family: var(--font-display); font-size: 32px; font-weight: 800; color: var(--dark); letter-spacing: -1px; margin-top: 6px; }
+    .price-amount small { font-family: var(--font-body); font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+    .price-alt { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .price-card.featured .price-name, .price-card.featured .price-amount { color: var(--white); }
+    .price-card.featured .price-amount small, .price-card.featured .price-alt { color: rgba(255,255,255,0.6); }
+    .price-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .price-list li { font-size: 13px; line-height: 1.5; color: var(--mid); padding-left: 20px; position: relative; }
+    .price-list li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .price-card.featured .price-list li { color: rgba(255,255,255,0.75); }
+    .price-card.featured .price-list li::before { color: var(--green-mid); }
+    .price-note { font-size: 12px; color: var(--faint); margin-top: 32px; line-height: 1.6; }
+
     /* TRUST */
     .trust { background: var(--green); }
     .trust .section-tag { color: var(--green-mid); }
@@ -142,6 +198,9 @@
     .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
 
     /* RESPONSIVE */
+    @media (max-width: 1100px) and (min-width: 901px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
@@ -152,6 +211,9 @@
       .how-grid { grid-template-columns: 1fr; }
       .split { grid-template-columns: 1fr; }
       .split-panel { padding: 60px 24px; }
+      .suite { padding: 60px 24px; }
+      .suite-inner { grid-template-columns: 1fr; gap: 40px; }
+      .pricing-grid { grid-template-columns: 1fr; }
       .trust-grid { grid-template-columns: repeat(2, 1fr); }
       .legal-section { padding: 60px 24px; }
       footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
@@ -168,9 +230,11 @@
   <ul class="nav-links">
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#homeowners">Homeowners</a></li>
-    <li><a href="#workers">Professionals</a></li>
+    <li><a href="#landlords">Landlords</a></li>
+    <li><a href="#builders">Builders</a></li>
+    <li><a href="#workers">Tradesmen</a></li>
+    <li><a href="#pricing">Plans</a></li>
     <li><a href="#privacy">Privacy</a></li>
-    <li><a href="#terms">Terms</a></li>
     <li><a href="#cta" class="nav-cta">Launching 2026</a></li>
   </ul>
 </nav>
@@ -181,14 +245,15 @@
   <div class="hero-inner">
     <div>
       <div class="hero-badge"><span class="hero-badge-dot"></span> Coming Soon in South Africa</div>
-      <h1>Your Home,<br><em>Fixed Right.</em></h1>
-      <p>Praxis SA connects South African homeowners with verified, background-checked trade professionals. Post a job, get quotes, hire with confidence.</p>
+      <h1>Every property job,<br><em>one platform.</em></h1>
+      <p>Praxis SA brings homeowners, landlords, builders and tradesmen together: verified professionals for every job, rental maintenance that runs itself, construction projects with draws and variations, and the records SARS asks for at tax time.</p>
       <div class="hero-actions">
         <a href="#cta" class="btn-primary">🛠 Launching 2026</a>
         <a href="#how-it-works" class="btn-secondary">See how it works →</a>
       </div>
       <div class="hero-stats">
         <div><div class="hero-stat-value">100%</div><div class="hero-stat-label">Verified Pros</div></div>
+        <div><div class="hero-stat-value">4</div><div class="hero-stat-label">Workspaces</div></div>
         <div><div class="hero-stat-value">ZA</div><div class="hero-stat-label">Built for SA</div></div>
       </div>
     </div>
@@ -241,31 +306,87 @@
 
 <div class="split">
   <div class="split-panel split-panel-home" id="homeowners">
-    <div class="section-tag">Homeowners</div>
+    <div class="section-tag">Homeowner Hub</div>
     <h2 class="section-heading">Peace of mind, every job.</h2>
-    <p class="section-sub">Every professional on Praxis SA is verified, background-checked, and rated by real homeowners like you.</p>
+    <p class="section-sub">Hire verified local professionals, and keep every certificate and record of work on your home in one place.</p>
     <ul class="feature-list">
-      <li><span class="feature-check">✓</span>Post a job in under 2 minutes, any trade</li>
-      <li><span class="feature-check">✓</span>Get multiple competitive quotes fast</li>
-      <li><span class="feature-check">✓</span>View verified ID, police clearance &amp; qualifications</li>
-      <li><span class="feature-check">✓</span>Message your pro directly through the app</li>
-      <li><span class="feature-check">✓</span>Leave reviews and build your trusted network</li>
+      <li><span class="feature-check">✓</span><span><b>Verified local contractors.</b> ID, police clearance and trade qualifications checked before anyone quotes.</span></li>
+      <li><span class="feature-check">✓</span><span><b>Post a job, compare quotes.</b> Any trade, in under two minutes, with ratings and chat in the app.</span></li>
+      <li><span class="feature-check">✓</span><span><b>Your home's records.</b> Certificates of Compliance and warranties from the tradesmen you hire land in your property vault.</span></li>
+      <li><span class="feature-check">✓</span><span><b>House Sale Pack.</b> Every certificate in one indexed PDF for your conveyancer, and a Verified for Sale report for buyers (Homeowner Pro).</span></li>
     </ul>
   </div>
   <div class="split-panel split-panel-worker" id="workers">
-    <div class="section-tag">Professionals</div>
+    <div class="section-tag">Tradesman OS · Praxis Pro</div>
     <h2 class="section-heading">Grow your business.</h2>
-    <p class="section-sub">Access a steady stream of verified job leads matched to your trade, location, and availability.</p>
+    <p class="section-sub">Job leads matched to your trade and area, and the tools to run the job from quote to sign-off.</p>
     <ul class="feature-list">
-      <li><span class="feature-check">✓</span>See jobs matched to your specific trade skills</li>
-      <li><span class="feature-check">✓</span>Filter by distance, urgency, and budget</li>
-      <li><span class="feature-check">✓</span>Build a verified profile that wins more work</li>
-      <li><span class="feature-check">✓</span>Track earnings, invoices, and job history</li>
-      <li><span class="feature-check">✓</span>Set your own rates, availability, and service area</li>
-      <li><span class="feature-check">✓</span>Get paid faster with digital invoicing</li>
+      <li><span class="feature-check">✓</span><span><b>Fast quotes and invoices.</b> Itemised PDFs with your logo, sent on WhatsApp in a few taps.</span></li>
+      <li><span class="feature-check">✓</span><span><b>Digital sign-off.</b> Your client signs on your phone to accept the work, with a Proof of Work certificate.</span></li>
+      <li><span class="feature-check">✓</span><span><b>Snag lists and site photo logs.</b> Before, during and after, with concealed work on record.</span></li>
+      <li><span class="feature-check">✓</span><span><b>Material pick-lists.</b> WhatsApp your list to the merchant so it's ready when you arrive.</span></li>
+      <li><span class="feature-check">✓</span><span><b>Vehicle logbook.</b> Business kilometres recorded for your SARS travel claim.</span></li>
+      <li><span class="feature-check">✓</span><span><b>Leads and a Verified Pro badge.</b> Jobs matched to your skills, priority in search, and a head start on emergencies.</span></li>
     </ul>
+    <a href="#pricing" class="plan-pill">Praxis Pro · R350/month →</a>
   </div>
 </div>
+
+<section class="suite suite-light" id="landlords">
+  <div class="suite-inner">
+    <div>
+      <div class="section-tag">Landlord Pro</div>
+      <h2 class="section-heading">Rentals that run themselves.</h2>
+      <p class="section-sub">Tenants report issues in seconds, the right tradesman gets the job within your budget, and your tax records keep themselves.</p>
+      <ul class="feature-list">
+        <li><span class="feature-check">✓</span><span><b>Zero-friction tenant reporting.</b> Each tenant gets a private link to report issues with photos. No app to install, no sign-up.</span></li>
+        <li><span class="feature-check">✓</span><span><b>Three-way dispatch with spend caps.</b> Send a ticket to your preferred tradesman on Praxis or on WhatsApp, with a spend limit they can't go over without your approval.</span></li>
+        <li><span class="feature-check">✓</span><span><b>POPIA-minded by design.</b> Your tenant's contact details reach the tradesman only if you choose to share them.</span></li>
+        <li><span class="feature-check">✓</span><span><b>SARS rental schedules.</b> Every repair and running cost sorted under Section 11(a) and 11(d), with receipts attached, ready for tax season.</span></li>
+        <li><span class="feature-check">✓</span><span><b>Capital Gains Tax base cost.</b> Improvements are kept apart from deductible repairs, so they're on record when you sell.</span></li>
+      </ul>
+      <a href="#pricing" class="plan-pill">Landlord Pro · R349/month →</a>
+    </div>
+    <div class="mock fade-up" aria-hidden="true">
+      <div class="mock-tag amber">⚡ Urgent ticket</div>
+      <div class="mock-title">Geyser leaking</div>
+      <div class="mock-sub">Unit 4, Rondebosch · reported by tenant with 3 photos</div>
+      <div class="mock-row" style="margin-top:10px"><span>Sent to</span><b>Plumber · on Praxis</b></div>
+      <div class="mock-row"><span>Spend cap</span><b>R1 500</b></div>
+      <div class="mock-row"><span>Tenant contact</span><span class="mock-chip">Not shared</span></div>
+      <div class="mock-row"><span>SARS category</span><span class="mock-chip ok">s11(d) repairs</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="suite suite-dark" id="builders">
+  <div class="suite-inner">
+    <div class="mock fade-up" aria-hidden="true">
+      <div class="mock-tag">🏗 On site</div>
+      <div class="mock-title">Double-storey extension</div>
+      <div class="mock-sub">Lynnwood, Pretoria · 3 of 6 stages claimed</div>
+      <div class="mock-bar"><div style="width:55%"></div></div>
+      <div class="mock-row"><span>Revised contract</span><b>R1 247 067.89</b></div>
+      <div class="mock-row"><span>Retention held (5%)</span><b>R30 864.20</b></div>
+      <div class="mock-row"><span>VO-002 · Extra plug points</span><span class="mock-chip wait">Awaiting client</span></div>
+      <div class="mock-actions"><span class="mock-btn">Approve</span><span class="mock-btn ghost">Decline with note</span></div>
+    </div>
+    <div>
+      <div class="section-tag">Construction Pro · Builder OS</div>
+      <h2 class="section-heading">Every site, every draw, in your pocket.</h2>
+      <p class="section-sub">Run renovations and new builds from one Projects tab, with your client kept up to date on a private link.</p>
+      <ul class="feature-list">
+        <li><span class="feature-check">✓</span><span><b>Many sites at once.</b> Each project with its site, client, contract value and programme.</span></li>
+        <li><span class="feature-check">✓</span><span><b>Milestone draws with retention.</b> Stage-by-stage claims worked out to the cent, retention held on every draw and released 50/50 at practical completion and final handover, the way JBCC-style contracts work.</span></li>
+        <li><span class="feature-check">✓</span><span><b>Digital Variation Orders.</b> Price the change and its time impact; your client approves or declines from a link, and the contract value and completion date update themselves.</span></li>
+        <li><span class="feature-check">✓</span><span><b>Daily site diary.</b> Weather, crew on site and progress photos, kept internal or shared with the client.</span></li>
+        <li><span class="feature-check">✓</span><span><b>Payment and handover certificates.</b> Interim Payment Certificates for every claim, and Practical Completion and Final Handover certificates, as PDFs.</span></li>
+        <li><span class="feature-check">✓</span><span><b>Subcontractors.</b> Book trades by stage, on Praxis or on WhatsApp. Everything in Praxis Pro is included.</span></li>
+      </ul>
+      <a href="#pricing" class="plan-pill">Construction Pro · R899/month →</a>
+    </div>
+  </div>
+</section>
 
 <section class="trust">
   <div class="section-inner">
@@ -280,11 +401,68 @@
   </div>
 </section>
 
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-tag">Plans</div>
+    <h2 class="section-heading">Start free. Upgrade when it pays.</h2>
+    <p class="section-sub">Every account starts free. Paid plans are monthly or yearly, and you can cancel any time.</p>
+    <div class="pricing-grid">
+      <div class="price-card fade-up">
+        <div class="price-who">Homeowners</div>
+        <div class="price-tier">
+          <div class="price-name">Free</div>
+          <div class="price-amount">R0</div>
+          <ul class="price-list"><li>Post jobs and compare quotes</li><li>Verified professionals</li><li>Property vault for one property</li></ul>
+        </div>
+        <div class="price-tier">
+          <div class="price-name">Homeowner Pro</div>
+          <div class="price-amount">R99 <small>/ month</small></div>
+          <div class="price-alt">or R799 / year</div>
+          <ul class="price-list"><li>Two properties</li><li>House Sale Pack</li><li>Verified for Sale report</li></ul>
+        </div>
+      </div>
+      <div class="price-card fade-up" style="transition-delay:0.1s">
+        <div class="price-who">Tradesmen</div>
+        <div class="price-tier">
+          <div class="price-name">Free</div>
+          <div class="price-amount">R0</div>
+          <ul class="price-list"><li>5 quotes every 30 days</li><li>5 quotes and invoices a month</li><li>3 Toolbox documents</li></ul>
+        </div>
+        <div class="price-tier">
+          <div class="price-name">Praxis Pro</div>
+          <div class="price-amount">R350 <small>/ month</small></div>
+          <div class="price-alt">or R3 500 / year</div>
+          <ul class="price-list"><li>Unlimited quotes and invoices</li><li>Digital sign-off and your logo</li><li>Snag logs, pick-lists, logbook</li><li>Verified Pro badge and priority leads</li></ul>
+        </div>
+      </div>
+      <div class="price-card fade-up" style="transition-delay:0.2s">
+        <div class="price-who">Landlords</div>
+        <div class="price-tier">
+          <div class="price-name">Landlord Pro</div>
+          <div class="price-amount">R349 <small>/ month</small></div>
+          <div class="price-alt">or R2 999 / year</div>
+          <ul class="price-list"><li>Unlimited properties</li><li>Tenant reporting links</li><li>Dispatch with spend caps</li><li>SARS rental schedules and CGT base cost</li><li>Everything in Homeowner Pro</li></ul>
+        </div>
+      </div>
+      <div class="price-card featured fade-up" style="transition-delay:0.3s">
+        <div class="price-who">Builders</div>
+        <div class="price-tier">
+          <div class="price-name">Construction Pro</div>
+          <div class="price-amount">R899 <small>/ month</small></div>
+          <div class="price-alt">or R8 990 / year</div>
+          <ul class="price-list"><li>Unlimited projects</li><li>Milestone draws and retention</li><li>Variation Orders with client approval</li><li>Site diary and subcontractors</li><li>Payment and handover certificates</li><li>Everything in Praxis Pro</li></ul>
+        </div>
+      </div>
+    </div>
+    <p class="price-note">Subscriptions are billed through the App Store or Google Play and renew automatically until cancelled. The price shown in the store at checkout applies.</p>
+  </div>
+</section>
+
 <section class="cta-section" id="cta">
   <div class="section-inner cta-inner">
     <div class="section-tag">Get Started</div>
     <h2 class="section-heading">Ready to get started?</h2>
-    <p class="section-sub" style="margin:0 auto">Download Praxis SA and post your first job in minutes. Or sign up as a professional and start receiving leads today.</p>
+    <p class="section-sub" style="margin:0 auto">Download Praxis SA to post your first job, set up your rentals or start your first build. Or sign up as a professional and start receiving leads.</p>
     <div class="cta-actions">
       <a href="#" class="btn-primary">📱 Download for iOS</a>
       <a href="#" class="btn-primary">🤖 Download for Android</a>
@@ -458,6 +636,7 @@
   <a href="#" class="footer-logo">Praxis<span>SA</span></a>
   <ul class="footer-links">
     <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#pricing">Plans</a></li>
     <li><a href="#privacy">Privacy Policy</a></li>
     <li><a href="#delete-request" style="color: #F87171; font-weight: 600;">Request Data Deletion</a></li>
     <li><a href="#terms">Terms of Use</a></li>
