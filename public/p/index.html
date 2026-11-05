@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- The link in the address bar is the client's key: never send it on as a referrer, never index it -->
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#047857" />
+  <title>Your building project · Praxis SA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #047857; --green-light: #059669; --green-pale: #ECFDF5; --green-mid: #D1FAE5;
+      --dark: #111827; --mid: #374151; --muted: #6B7280; --faint: #9CA3AF;
+      --bg: #F9FAFB; --white: #FFFFFF; --border: #E5E7EB;
+      --red: #DC2626; --red-pale: #FEF2F2; --amber: #D97706; --amber-pale: #FFFBEB;
+      --blue: #1D4ED8; --blue-pale: #EFF6FF;
+      --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+    html { -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--dark); min-height: 100vh; line-height: 1.5; }
+    .wrap { max-width: 560px; margin: 0 auto; padding: 20px 16px 48px; }
+    .brand { font-family: var(--font-display); font-weight: 800; font-size: 20px; color: var(--green); text-decoration: none; letter-spacing: -0.5px; }
+    .brand span { color: var(--dark); }
+    header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .badge { font-size: 11px; font-weight: 700; color: var(--green); background: var(--green-pale); border: 1px solid var(--green-mid); padding: 4px 10px; border-radius: 100px; }
+    h1 { font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 6px; overflow-wrap: anywhere; }
+    h2 { font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -0.3px; margin: 26px 0 10px; }
+    .lead { color: var(--muted); font-size: 15px; margin-bottom: 16px; overflow-wrap: anywhere; }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 18px; margin-bottom: 14px; }
+    .label { display: block; font-size: 12px; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .small { color: var(--muted); font-size: 13px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 100px; background: var(--bg); border: 1px solid var(--border); color: var(--mid); }
+    .chip.green { background: var(--green-pale); border-color: var(--green-mid); color: var(--green); }
+    .chip.amber { background: var(--amber-pale); border-color: #FDE68A; color: #92400E; }
+    .chip.blue { background: var(--blue-pale); border-color: #BFDBFE; color: var(--blue); }
+
+    .builder { display: flex; align-items: center; gap: 12px; }
+    .builder .who { flex: 1; min-width: 0; }
+    .builder b { display: block; font-size: 15px; overflow-wrap: anywhere; }
+    .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 14px; background: var(--bg); border: 1px solid var(--border); text-decoration: none; font-size: 20px; flex: none; }
+    .icon-btn.wa { background: #DCFCE7; border-color: #BBF7D0; }
+
+    .progress { height: 10px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 10px 0 8px; }
+    .progress > div { height: 100%; background: var(--green); border-radius: 6px; width: 0; transition: width .6s ease; }
+    .dates { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
+    .dates div { background: var(--bg); border-radius: 12px; padding: 10px 12px; }
+    .dates small { display: block; font-size: 11px; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: .6px; }
+    .dates b { font-size: 14px; }
+    .dates .moved b { color: var(--amber); }
+
+    .vo { border: 1.5px solid #FDE68A; background: var(--white); }
+    .vo-head { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+    .vo-head b { font-size: 16px; overflow-wrap: anywhere; }
+    .vo-desc { color: var(--mid); font-size: 14px; margin: 8px 0 12px; white-space: pre-line; overflow-wrap: anywhere; }
+    .vo-figures { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+    .vo-figures div { flex: 1; min-width: 120px; background: var(--bg); border-radius: 12px; padding: 10px 12px; }
+    .vo-figures small { display: block; font-size: 11px; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: .6px; }
+    .vo-figures b { font-size: 16px; }
+    .vo-figures .neg b { color: var(--green); }
+    .vo-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    textarea { width: 100%; font: inherit; font-size: 16px; color: var(--dark); background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px; padding: 12px 14px; outline: none; min-height: 90px; resize: vertical; margin: 10px 0; }
+    textarea:focus { border-color: var(--green); background: var(--white); }
+    .decided { font-size: 14px; border-radius: 14px; padding: 12px 14px; margin-top: 4px; }
+    .decided.ok { background: var(--green-pale); color: #065F46; border: 1px solid var(--green-mid); }
+    .decided.no { background: var(--amber-pale); color: #92400E; border: 1px solid #FDE68A; }
+
+    .photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 10px; }
+    .photos a { display: block; aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: var(--bg); }
+    .photos img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .timeline { list-style: none; position: relative; }
+    .timeline li { position: relative; padding: 0 0 18px 34px; }
+    .timeline li::before { content: ''; position: absolute; left: 11px; top: 24px; bottom: 0; width: 2px; background: var(--border); }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li:last-child::before { display: none; }
+    .dot { position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--border); background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--muted); }
+    .timeline li.done .dot { background: var(--green); border-color: var(--green); color: #fff; }
+    .timeline li.now .dot { border-color: var(--amber); color: var(--amber); background: var(--amber-pale); }
+    .timeline b { display: block; font-size: 15px; overflow-wrap: anywhere; }
+
+    .log { padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .log:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .log-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+    .log-head b { font-size: 15px; }
+    .log p { color: var(--mid); font-size: 14px; white-space: pre-line; overflow-wrap: anywhere; }
+
+    .row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .row:last-child { border-bottom: none; }
+    .row span:first-child { overflow-wrap: anywhere; }
+    .row span:last-child { font-weight: 700; white-space: nowrap; }
+
+    .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 50px; border: none; border-radius: 100px; background: var(--green); color: #fff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 24px rgba(4,120,87,.25); transition: background .15s, opacity .15s; }
+    .btn:hover { background: var(--green-light); }
+    .btn:disabled { opacity: .5; cursor: default; }
+    .btn.ghost { background: var(--white); color: var(--mid); border: 1.5px solid var(--border); box-shadow: none; }
+    .btn.danger { background: var(--white); color: #991B1B; border: 1.5px solid #FECACA; box-shadow: none; }
+    .error { display: none; font-size: 14px; font-weight: 500; color: #991B1B; background: var(--red-pale); border: 1px solid #FECACA; border-radius: 14px; padding: 12px 14px; margin-top: 10px; }
+    .error.show { display: block; }
+    .empty { color: var(--muted); font-size: 14px; text-align: center; padding: 8px 0; }
+    .state { text-align: center; padding: 40px 8px; }
+    .state .icon { width: 64px; height: 64px; border-radius: 20px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 30px; background: var(--amber-pale); }
+    .state p { color: var(--muted); margin: 8px 0 20px; }
+    .spinner { width: 28px; height: 28px; border: 3px solid var(--green-mid); border-top-color: var(--green); border-radius: 50%; animation: spin .8s linear infinite; margin: 60px auto; }
+    .btn .spinner { width: 18px; height: 18px; margin: 0; border-width: 2px; border-color: rgba(255,255,255,.4); border-top-color: #fff; }
+    .btn.ghost .spinner, .btn.danger .spinner { border-color: var(--border); border-top-color: var(--mid); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    [hidden] { display: none !important; }
+    footer { text-align: center; font-size: 12px; color: var(--faint); margin-top: 28px; }
+    footer a { color: var(--faint); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="/">Praxis<span> SA</span></a>
+      <span class="badge">Project updates</span>
+    </header>
+
+    <div id="loading" class="spinner" role="status" aria-label="Loading"></div>
+
+    <!-- A link that can't be used -->
+    <section id="invalid" class="state" hidden>
+      <div class="icon">🔗</div>
+      <h1>This link isn't active</h1>
+      <p id="invalid-text">This project link isn't active. Please contact your builder directly.</p>
+    </section>
+
+    <main id="page" hidden>
+      <p class="small" id="hello"></p>
+      <h1 id="title"></h1>
+      <p class="lead" id="address"></p>
+
+      <div class="card">
+        <div class="builder">
+          <div class="who">
+            <span class="label">Your builder</span>
+            <b id="builder"></b>
+          </div>
+          <a class="icon-btn" id="call" aria-label="Call your builder" hidden>📞</a>
+          <a class="icon-btn wa" id="wa" aria-label="WhatsApp your builder" target="_blank" rel="noopener noreferrer" hidden>💬</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+          <span class="label" style="margin:0">Progress</span>
+          <span class="chip" id="status"></span>
+        </div>
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="bar"><div id="bar-fill"></div></div>
+        <span class="small" id="progress-text"></span>
+        <div class="dates" id="dates"></div>
+      </div>
+
+      <section id="pending-wrap" hidden>
+        <h2>Waiting for your approval</h2>
+        <div id="pending"></div>
+      </section>
+
+      <h2>Stages</h2>
+      <div class="card"><ol class="timeline" id="stages"></ol></div>
+
+      <h2>Site diary</h2>
+      <div class="card" id="diary"></div>
+
+      <section id="approved-wrap" hidden>
+        <h2>Approved changes</h2>
+        <div class="card" id="approved"></div>
+      </section>
+    </main>
+
+    <footer>Powered by <a href="/">Praxis SA</a> · <a href="/#privacy">Privacy</a></footer>
+  </div>
+
+  <script>
+  (() => {
+    // The project's public anon key (the same one the app ships with). Row-level
+    // security and the two link functions decide what it can do.
+    const SUPABASE_URL = 'https://rqvddymgxvexmgnxipqg.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_G1inr2qdtbB19NsoFX46JQ_DzGBfked';
+    const PHOTOS_FN = SUPABASE_URL + '/functions/v1/construction-site-photos';
+    const INVALID = "This project link isn't active. Please contact your builder directly.";
+
+    const STATUS = {
+      planning: ['Getting ready', 'blue'], active: ['Under construction', 'amber'],
+      practical_completion: ['Practically complete', 'green'], final_handover: ['Handed over', 'green'],
+    };
+    const WEATHER = {
+      clear: '☀️ Clear', rain_delay: '🌧️ Rain delay', extreme_heat: '🌡️ Extreme heat', loadshedding_delay: '🔌 Load-shedding delay',
+    };
+    const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    const $ = (id) => document.getElementById(id);
+    const show = (id) => ['loading', 'invalid', 'page'].forEach(s => { $(s).hidden = s !== id; });
+    const token = (location.pathname.match(/^\/p\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/?$/i) || [])[1];
+
+    // Builds an element; text is always set as text, never as HTML
+    const el = (tag, attrs = {}, ...children) => {
+      const e = document.createElement(tag);
+      Object.entries(attrs).forEach(([k, v]) => {
+        if (v == null || v === false) return;
+        if (k === 'class') e.className = v; else if (k === 'text') e.textContent = v; else e.setAttribute(k, v);
+      });
+      children.flat().forEach(c => c != null && e.append(c));
+      return e;
+    };
+
+    const date = (iso) => {
+      const m = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+      return m ? `${Number(m[3])} ${MONTHS[Number(m[2]) - 1]} ${m[1]}` : '';
+    };
+    const rand = (cents) => {
+      const neg = cents < 0;
+      const [r, c] = (Math.abs(cents) / 100).toFixed(2).split('.');
+      return `${neg ? '-' : ''}R${r.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}.${c}`;
+    };
+    const signed = (cents) => (cents > 0 ? '+' : '') + rand(cents);
+    const days = (n) => n === 0 ? 'No change' : `${n > 0 ? '+' : '−'}${Math.abs(n)} day${Math.abs(n) === 1 ? '' : 's'}`;
+    // 27821234567 → 082 123 4567
+    const localPhone = (p) => { const d = String(p || '').replace(/\D/g, ''); if (!/^27\d{9}$/.test(d)) return p || ''; const l = '0' + d.slice(2); return `${l.slice(0, 3)} ${l.slice(3, 6)} ${l.slice(6)}`; };
+    const waNumber = (p) => { const d = String(p || '').replace(/\D/g, ''); return /^27\d{9}$/.test(d) ? d : /^0\d{9}$/.test(d) ? '27' + d.slice(1) : null; };
+
+    const baseHeaders = () => {
+      const h = { apikey: SUPABASE_ANON_KEY, 'Content-Type': 'application/json' };
+      if (SUPABASE_ANON_KEY.startsWith('eyJ')) h.Authorization = 'Bearer ' + SUPABASE_ANON_KEY;   // legacy JWT anon keys
+      return h;
+    };
+
+    // Errors carry the database's code (TOKEN_INVALID, VARIATION_NOT_PENDING, …) and its hint
+    class ApiError extends Error { constructor(code, hint) { super(code); this.code = code; this.hint = hint; } }
+
+    const rpc = async (name, body) => {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${name}`, { method: 'POST', headers: baseHeaders(), body: JSON.stringify(body) });
+      const data = await res.json().catch(() => null);
+      if (!res.ok) throw new ApiError((data && data.message) || 'SERVER_ERROR', data && data.hint);
+      return data;
+    };
+
+    const photoUrls = async () => {
+      try {
+        const res = await fetch(PHOTOS_FN, { method: 'POST', headers: baseHeaders(), body: JSON.stringify({ action: 'photos', token }) });
+        const data = await res.json().catch(() => null);
+        return (res.ok && data && data.urls) || {};
+      } catch { return {}; }
+    };
+
+    const invalid = (text) => { $('invalid-text').textContent = text || INVALID; show('invalid'); };
+
+    // Photos are signed after the page shows; each img fills in when its URL arrives
+    let urls = {};
+    const photoGrid = (paths) => {
+      if (!paths || !paths.length) return null;
+      return el('div', { class: 'photos' }, paths.map((p, i) => {
+        const img = el('img', { alt: `Site photo ${i + 1}`, loading: 'lazy', 'data-path': p });
+        const a = el('a', { target: '_blank', rel: 'noopener noreferrer', 'data-path': p }, img);
+        if (urls[p]) { img.src = urls[p]; a.href = urls[p]; }
+        return a;
+      }));
+    };
+    const fillPhotos = () => {
+      document.querySelectorAll('img[data-path]').forEach(img => { const u = urls[img.dataset.path]; if (u) img.src = u; });
+      document.querySelectorAll('a[data-path]').forEach(a => { const u = urls[a.dataset.path]; if (u) a.href = u; });
+    };
+
+    // ── Variations waiting for an answer ────────────────────────────────────
+    const voCard = (v, builder) => {
+      const err = el('div', { class: 'error', role: 'alert' });
+      const note = el('textarea', { maxlength: '1000', placeholder: `Tell ${builder} why, or what you'd like instead`, 'aria-label': 'Reason for declining' });
+      note.hidden = true;
+      const approve = el('button', { class: 'btn', type: 'button', text: 'Approve' });
+      const decline = el('button', { class: 'btn danger', type: 'button', text: 'Decline with a note' });
+      const actions = el('div', { class: 'vo-actions' }, approve, decline);
+      const card = el('div', { class: 'card vo' },
+        el('div', { class: 'vo-head' }, el('b', { text: `${v.variation_number}: ${v.title}` }), el('span', { class: 'chip amber', text: 'Your answer needed' })),
+        el('p', { class: 'vo-desc', text: v.description }),
+        el('div', { class: 'vo-figures' },
+          el('div', { class: v.amount_cents < 0 ? 'neg' : '' }, el('small', { text: v.amount_cents < 0 ? 'Saving' : 'Extra cost' }), el('b', { text: signed(v.amount_cents) })),
+          el('div', {}, el('small', { text: 'Time' }), el('b', { text: days(v.days_impact) }))),
+        photoGrid(v.photos), note, err, actions);
+
+      let declining = false;
+      const answer = async (approved) => {
+        err.classList.remove('show');
+        const text = note.value.trim();
+        if (!approved && !text) { err.textContent = `Tell ${builder} why you're declining.`; err.classList.add('show'); note.focus(); return; }
+        const btn = approved ? approve : decline;
+        const label = btn.textContent;
+        approve.disabled = decline.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span>';
+        try {
+          const r = await rpc('submit_variation_approval', { p_token: token, p_variation_id: v.id, p_approved: approved, p_client_notes: approved ? (text || null) : text });
+          actions.replaceWith(el('div', { class: `decided ${approved ? 'ok' : 'no'}`,
+            text: approved
+              ? `Approved. ${builder} has been told${r && r.revised_completion_date ? `; completion is now planned for ${date(r.revised_completion_date)}` : ''}.`
+              : `Declined. ${builder} has your note and will be in touch.` }));
+          note.hidden = true;
+          setTimeout(load, 1800);
+        } catch (e) {
+          if (e.code === 'TOKEN_INVALID') { invalid(e.hint); return; }
+          err.textContent = e.hint || "Your answer couldn't be sent. Check your connection and try again.";
+          err.classList.add('show');
+          if (e.code === 'VARIATION_NOT_PENDING') setTimeout(load, 1800);
+        } finally {
+          approve.disabled = decline.disabled = false;
+          btn.textContent = label;
+        }
+      };
+      approve.addEventListener('click', () => answer(true));
+      decline.addEventListener('click', () => {
+        if (!declining) { declining = true; note.hidden = false; note.focus(); decline.textContent = 'Send decline'; return; }
+        answer(false);
+      });
+      return card;
+    };
+
+    // ── The page ─────────────────────────────────────────────────────────────
+    const render = (ctx) => {
+      const builder = ctx.builder_name || 'your builder';
+      $('hello').textContent = ctx.client_first_name ? `Hi ${ctx.client_first_name}, here's where your project is at.` : "Here's where your project is at.";
+      $('title').textContent = ctx.title;
+      $('address').textContent = ctx.site_address;
+      document.title = `${ctx.title} · Praxis SA`;
+
+      $('builder').textContent = builder;
+      const wa = waNumber(ctx.builder_phone);
+      $('call').hidden = !ctx.builder_phone;
+      if (ctx.builder_phone) { $('call').href = `tel:${ctx.builder_phone.startsWith('27') ? '+' + ctx.builder_phone : ctx.builder_phone}`; $('call').title = localPhone(ctx.builder_phone); }
+      $('wa').hidden = !wa;
+      if (wa) $('wa').href = `https://wa.me/${wa}?text=${encodeURIComponent(`Hi, it's about ${ctx.title}: `)}`;
+
+      const [statusText, tone] = STATUS[ctx.status] || ['In progress', 'blue'];
+      $('status').textContent = statusText;
+      $('status').className = `chip ${tone}`;
+      const pct = Math.max(0, Math.min(100, Number(ctx.progress_pct) || 0));
+      $('bar').setAttribute('aria-valuenow', String(Math.round(pct)));
+      requestAnimationFrame(() => { $('bar-fill').style.width = pct + '%'; });
+      const stages = ctx.milestones || [];
+      const done = stages.filter(m => m.status !== 'pending' && m.status !== 'in_progress').length;
+      $('progress-text').textContent = stages.length ? `${done} of ${stages.length} stages complete · ${Math.round(pct)}% of the work` : 'The stages are still being planned.';
+
+      const moved = ctx.revised_completion_date && ctx.revised_completion_date !== ctx.target_completion_date;
+      $('dates').replaceChildren(
+        el('div', {}, el('small', { text: 'Started' }), el('b', { text: date(ctx.start_date) })),
+        ctx.target_completion_date ? el('div', {}, el('small', { text: moved ? 'Original target' : 'Target completion' }), el('b', { text: date(ctx.target_completion_date) })) : null,
+        moved ? el('div', { class: 'moved' }, el('small', { text: 'Now planned for' }), el('b', { text: date(ctx.revised_completion_date) })) : null,
+      );
+
+      const pending = ctx.pending_variations || [];
+      $('pending-wrap').hidden = !pending.length;
+      $('pending').replaceChildren(...pending.map(v => voCard(v, builder)));
+
+      const current = stages.findIndex(m => m.status === 'pending' || m.status === 'in_progress');
+      $('stages').replaceChildren(...(stages.length ? stages.map((m, i) => {
+        const complete = m.status !== 'pending' && m.status !== 'in_progress';
+        const now = m.status === 'in_progress' || (i === current && !complete);
+        return el('li', { class: complete ? 'done' : now ? 'now' : '' },
+          el('span', { class: 'dot', text: complete ? '✓' : String(i + 1) }),
+          el('b', { text: m.title }),
+          el('span', { class: 'small', text: complete
+            ? `Complete${m.completed_at ? ' · ' + date(m.completed_at) : ''}`
+            : `${m.status === 'in_progress' ? 'In progress' : 'Not started'}${m.due_date ? ' · due ' + date(m.due_date) : ''}` }));
+      }) : [el('li', {}, el('span', { class: 'dot', text: '…' }), el('span', { class: 'small', text: `${builder} hasn't added the stages yet.` }))]));
+
+      const logs = ctx.site_logs || [];
+      $('diary').replaceChildren(...(logs.length ? logs.map(l => el('div', { class: 'log' },
+        el('div', { class: 'log-head' }, el('b', { text: date(l.log_date) }),
+          el('span', {}, el('span', { class: 'chip', text: WEATHER[l.weather] || l.weather }), ' ', el('span', { class: 'chip', text: `👷 ${l.headcount} on site` }))),
+        el('p', { text: l.notes }), photoGrid(l.photos))) : [el('p', { class: 'empty', text: 'No diary entries yet.' })]));
+
+      const approved = ctx.approved_variations || [];
+      $('approved-wrap').hidden = !approved.length;
+      $('approved').replaceChildren(...approved.map(v => el('div', { class: 'row' },
+        el('span', { text: `${v.variation_number}: ${v.title} (${days(v.days_impact).toLowerCase()})` }), el('span', { text: signed(v.amount_cents) }))));
+
+      show('page');
+    };
+
+    const load = async () => {
+      try {
+        const ctx = await rpc('get_client_project_context', { p_token: token });
+        render(ctx);
+        const hasPhotos = (ctx.pending_variations || []).some(v => (v.photos || []).length) || (ctx.site_logs || []).some(l => (l.photos || []).length);
+        if (hasPhotos) { urls = await photoUrls(); fillPhotos(); }
+      } catch (err) {
+        if (err.code === 'TOKEN_INVALID') invalid(err.hint);
+        else invalid("We couldn't load this page. Check your connection and refresh.");
+      }
+    };
+
+    if (!token || SUPABASE_ANON_KEY.startsWith('PASTE_')) invalid(); else load();
+  })();
+  </script>
+</body>
+</html>

@@ -4,3 +4,10 @@
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
   X-Frame-Options: DENY
+
+# The client project page: its URL is the client's key
+/p/*
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+  X-Frame-Options: DENY
